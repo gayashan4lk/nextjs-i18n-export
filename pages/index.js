@@ -2,11 +2,20 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
+import { useState, useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ data }) {
 	const serverData = JSON.parse(data);
+
+	const [time, setTime] = useState();
+
+	useEffect(() => {
+		fetch('/api/time')
+			.then((res) => res.json())
+			.then((json) => setTime(new Date(json.time)));
+	}, []);
 
 	return (
 		<>
@@ -33,7 +42,9 @@ export default function Home({ data }) {
 				</div>
 				<div className={styles.center}>
 					<h1>
-						Welcome to Next.js! <br /> The time is {serverData.time}
+						Welcome to Next.js! <br />{' '}
+						{time &&
+							`The time is ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`}
 					</h1>
 				</div>
 			</main>
