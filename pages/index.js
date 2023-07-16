@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import { useState, useEffect } from 'react';
+import LanguageSelector from '@/components/LanguageSelector';
+import { FormattedMessage } from 'react-intl';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,8 +29,11 @@ export default function Home({ data }) {
 			</Head>
 			<main className={`${styles.main} ${inter.className}`}>
 				<div className={styles.description}>
-					<div>Built By Gayashan</div>
+					<div>
+						<FormattedMessage id='home.builtByMessage' />
+					</div>
 				</div>
+				<LanguageSelector />
 
 				<div className={styles.center}>
 					<Image
@@ -42,7 +47,7 @@ export default function Home({ data }) {
 				</div>
 				<div className={styles.center}>
 					<h1>
-						Welcome to Next.js! <br />{' '}
+						<FormattedMessage id='home.welcomeMessage' /> <br />{' '}
 						{time &&
 							`The time is ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`}
 					</h1>

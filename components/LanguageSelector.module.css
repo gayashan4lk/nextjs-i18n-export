@@ -1,0 +1,15 @@
+/* .langTranslationBtnContainer {
+	background-color: rgb(167, 77, 77);
+	position: relative;
+	top: -58px;
+	right: 118px;
+	border-radius: 10px;
+}
+
+.langTranslationBtnContainer > button {
+	border: none;
+	color: var(--colour-main);
+	font-weight: bold;
+	margin: 5px;
+	background-color: white;
+} */
